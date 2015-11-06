@@ -31,7 +31,19 @@ infixl 0 $$!, $$
 ($$!) :: U -> U -> U
 ($$!) = u
 
-($$) :: (Uni a, Uni b) => (forall c. Uni c => (a -> b -> c))
+($$) :: Uni c => (forall a b. (Uni a, Uni b) => (a -> b -> c))
 x $$ y = let x' = lift x
              y' = lift y
          in unlift $ (x' $$! y')
+
+liftL1 :: (U -> U) -> U
+liftL1 = U
+
+liftL2 :: (U -> U -> U) -> U
+liftL2 f = U $ liftL1 . f
+
+liftL3 :: (U -> U -> U -> U) -> U
+liftL3 f = U $ liftL2 . f
+
+liftL4 :: (U -> U -> U -> U -> U) -> U
+liftL4 f = U $ liftL3 . f
