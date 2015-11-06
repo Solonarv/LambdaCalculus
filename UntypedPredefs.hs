@@ -1,4 +1,4 @@
-module LambdaCalculus.Untyped.Predefined where
+module UntypedPredefs where
 -- Church numerals, pairs, ...
 -- Note: omitted type signatures are :: U
 

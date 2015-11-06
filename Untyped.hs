@@ -6,6 +6,8 @@
     UndecidableInstances,
     OverlappingInstances #-}
 
+-- Yes, Template Haskell. Sue me.
+
 module Untyped where
 
 import Data.List
@@ -35,15 +37,3 @@ infixl 0 $$!, $$
 x $$ y = let x' = lift x
              y' = lift y
          in unlift $ (x' $$! y')
-
-liftL1 :: (U -> U) -> U
-liftL1 = U
-
-liftL2 :: (U -> U -> U) -> U
-liftL2 f = U $ liftL1 . f
-
-liftL3 :: (U -> U -> U -> U) -> U
-liftL3 f = U $ liftL2 . f
-
-liftL4 :: (U -> U -> U -> U -> U) -> U
-liftL4 f = U $ liftL3 . f
