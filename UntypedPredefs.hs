@@ -3,6 +3,7 @@ module UntypedPredefs where
 -- Note: omitted type signatures are :: U
 
 import Untyped
+import UntypedTemplateMagic
 
 constU = liftL2 const
 idU = liftL1 id
@@ -72,3 +73,14 @@ instance Num U where
     negate = (zneg $$!)
 
 -- Rationals sometime else
+
+-- Some combinators
+
+-- Anonymous recursion made easy!
+anonrec = liftL2 $ \f r -> f $$ f $$ r
+-- Ye Ole Y Combinator
+fixedpoint = liftL1 $ \f -> innercomb $$ innercomb where innercomb = liftL1 $ \x -> f $$ (x $$ x)
+-- SKI, aliased for convenience
+s = liftL3 $ \x y z -> (x $$ z) $$ (y $$ z)
+k = constU
+i = idU
