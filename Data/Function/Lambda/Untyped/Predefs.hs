@@ -1,9 +1,15 @@
-module UntypedPredefs where
+{-# LANGUAGE
+    TemplateHaskell
+    #-}
+
+module Data.Function.Lambda.Untyped.Predefs where
 -- Church numerals, pairs, ...
 -- Note: omitted type signatures are :: U
 
-import Untyped
-import UntypedTemplateMagic
+import Data.Function.Lambda.Untyped.Core
+import Data.Function.Lambda.Untyped.TH
+
+$(mkLiftLs 10)
 
 constU = liftL2 const
 idU = liftL1 id

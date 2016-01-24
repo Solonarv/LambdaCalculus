@@ -4,7 +4,7 @@ module UntypedTemplateBase where
 
 import Language.Haskell.TH
 
-import qualified Untyped as U
+import qualified Data.Function.Lambda.Untyped.Core as U
 
  -- This should really be in Language.Haskell.TH, but it isn't. Oh well.
  -- for TH types f, t corresponding to types F, T

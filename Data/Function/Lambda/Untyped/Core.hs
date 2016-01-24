@@ -6,9 +6,11 @@
     UndecidableInstances,
     OverlappingInstances #-}
 
--- Yes, Template Haskell. Sue me.
-
-module Untyped where
+module Data.Function.Lambda.Untyped.Core (
+    U(..),
+    Uni(..),
+    ($$!), ($$)
+    ) where
 
 import Data.List
 
